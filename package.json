@@ -25,5 +25,6 @@
   "bugs": {
     "url": "https://github.com/julesazuma/news-scrape/issues"
   },
-  "homepage": "https://github.com/julesazuma/news-scrape#readme"
+  "homepage": "https://github.com/julesazuma/news-scrape#readme",
+  "devDependencies": {}
 }
