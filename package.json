@@ -18,9 +18,11 @@
   },
   "homepage": "https://github.com/julesazuma/news-scrape#readme",
   "dependencies": {
+    "cheerio": "^1.0.0-rc.2",
     "express": "^4.16.4",
     "express-handlebars": "^3.0.0",
-    "mongoose": "^5.4.2"
+    "mongoose": "^5.4.2",
+    "request": "^2.88.0"
   },
   "devDependencies": {}
 }
