@@ -9,20 +9,26 @@ var ArticleSchema = new Schema({
   // `title` is required and of type String
   title: {
     type: String,
-    required: true
+    required: true,
+    unique: true
   },
-  // `link` is required and of type String
-  link: {
+  // description is required and of type String
+  description: {
     type: String,
-    required: true
+    required: true,
+    unique: true
   },
-  // `note` is an object that stores a Note id
-  // The ref property links the ObjectId to the Note model
-  // This allows us to populate the Article with an associated Note
-  note: {
-    type: Schema.Types.ObjectId,
-    ref: "Note"
-  }
+  // boolean to flag articles as saved
+  saved: {
+    type: Boolean,
+    required: true,
+    default: false
+  },
+  // This will save an array of comments' ObjectIds
+  comments:[{
+        type: Schema.ObjectId,
+        ref:'Comment'
+    }]
 });
 
 // This creates our model from the above schema, using mongoose's model method
