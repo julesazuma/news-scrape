@@ -1,84 +1,75 @@
-<nav class="navbar ">
-  <div class="navbar-brand">
-    <div class="navbar-item">
-      <img src="/assets/img/npr-logo.jpg" alt="NPR Logo">
-    </div>  
-    <div class="navbar-burger burger" data-target="navMenu">
-      <span></span>
-      <span></span>
-      <span></span>
-    </div>
-  </div>
-  <div id="navMenu" class="navbar-menu">
-    <div class="navbar-start">
-      <a class="navbar-item" href="/">
-        Home
-      </a>
-      <a class="saved navbar-item" href="/saved">
-        Saved Articles
-      </a>
-    </div>
+<nav class="navbar navbar-expand-lg navbar-dark bg-primary">
+  <a class="navbar-brand" href="/">Mongo Scraper</a>
+  <button class="navbar-toggler" data-toggle="collapse" data-target="#navbarColor01" aria-controls="navbarColor01" aria-expanded="false"
+    aria-label="Toggle navigation">
+    <span class="navbar-toggler-icon"></span>
+  </button>
+
+  <div class="collapse navbar-collapse" id="navbarColor01">
+    <ul class="navbar-nav mr-auto">
+      <li class="nav-item">
+        <a class="nav-link" href="/">Home
+          <span class="sr-only">(current)</span>
+        </a>
+      </li>
+      <li class="nav-item active">
+        <a class="nav-link" href="/saved">Saved Articles
+          <span class="sr-only">(current)</span>
+        </a>
+      </li>
+      <li class="nav-item">
+        <a class="btn btn-danger clear">CLEAR ARTICLES!</a>
+      </li>
+    </ul>
   </div>
 </nav>
-
-<section class="hero is-info">
-  <div class="hero-body">
-    <div class="container">
-      <div class="box dropdown is-pulled-right">
-        <ul>
-          <li><a class="navbar-item" href="/">Home</a></li>
-          <li><a id="saved" class="navbar-item" href="/saved">Saved Articles</a></li>
-        </ul>
+<div class="jumbotron text-center">
+  <div class="overlay">
+  </div>
+  <div class="background-image">
+  </div>
+  <div class="caption">
+    <h1>Saved Articles</h1>
+    <p>Your Saved Articles</p>
+  </div>
+</div>
+<div class="container-fluid article-container">
+  {{#each articles}}
+    <div data-_id={{this._id}} class="card">
+      <div class="card-header">
+        <h3>
+          <a class="article-link" target="_blank" rel="noopener noreferrer" href="{{this.url}}">{{this.headline}}</a>
+          <a class="btn btn-danger delete">Delete From Saved</a>
+          <a class="btn btn-info notes">Article Notes</a>
+        </h3>
       </div>
-      <h1 id="hero-title" class="title">
-        News Scraper
-      </h1>
-      <h2 class="subtitle">
-        NPR News
-      </h2>
+      <div class="card-body">{{this.summary}}</div>
     </div>
-  </div>
-</section>
-
-<section class="section">
-  <div class="container">
-    <h1 class="title">Saved Articles</h1>
-    <div id="saved-results"></div>
-  </div>
-</section>
+  {{/each}}
+  {{#unless articles.length}}
+    <div class="alert alert-warning text-center">
+      <h4>Uh Oh. Looks like we don't have any saved articles.</h4>
+    </div>
+    <div class="card">
+      <div class="card-header text-center">
+        <h3>Would You Like to Browse Available Articles?</h3>
+      </div>
+      <div class="card-body text-center">
+        <h4>
+          <a href="/">Browse Articles</a>
+        </h4>
+      </div>
+    </div>
+  {{/unless}}
+</div>
 
 <footer class="footer">
   <div class="container">
-    <div class="content has-text-centered">
-      <p>
-        <strong>NPR News Scraper</strong> by <a href="https://github.com/bcmiller713/news-scraper">Bryce Miller</a>
-      </p>
-    </div>
+    <p>New York Times Mongo Scraper</p>
   </div>
 </footer>
 
-<div class="modal">
-  <div class="modal-background"></div>
-  <div class="modal-card">
-    <header class="modal-card-head">
-      <p id="comments-header" class="modal-card-title">
-        {{!-- Modal header text dynamically rendered --}}
-      </p>
-      <button class="delete" aria-label="close"></button>
-    </header>
-    <section class="modal-card-body">
-      <div id="comments-list">
-        <p>Write the first comment for this article.</p>
-      </div>
-      <hr>
-      <div>
-        <textarea id="new-comment-field"></textarea>
-      </div>
-    </section>
-    <footer class="modal-card-foot">
-      {{!-- Save comment button dynamically rendered to include data-id attribute of article--}}
-    </footer>
-  </div>
-</div>
-
-<script src="/assets/js/saved.js"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/4.0.0/js/bootstrap.min.js"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/bootbox.js/4.4.0/bootbox.min.js"></script>
+<script src="/assets/javascript/saved.js"></script>

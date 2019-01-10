@@ -1,2 +1,2 @@
-# news-scrape
-A web app that lets users view and leave comments on the latest news.
+# mongo-scraper
+A web app that scrapes news and lets users view and save articles. They can also leave comments.
